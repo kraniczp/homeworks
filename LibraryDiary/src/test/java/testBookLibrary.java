@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 
 public class testBookLibrary {
     private final String testString = "Axcf123";
-    //private BookLibrary booklibrary = new BookLibrary(testString,testString);
     private BookLibrary booklibrary;
     
     public testBookLibrary() {
@@ -18,13 +17,8 @@ public class testBookLibrary {
 
     @Test
     public void testBooks(){
-        assertEquals(testString, booklibrary.getPerson_ID());
-        assertEquals(testString, booklibrary.getBook_ID());
+        assertEquals(testString, booklibrary.getrentTicket());
+        assertEquals(testString, booklibrary.getbookID());
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
 

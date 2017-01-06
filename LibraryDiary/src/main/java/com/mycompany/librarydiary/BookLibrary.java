@@ -1,23 +1,23 @@
 package com.mycompany.librarydiary;
 
 public class BookLibrary{
-    private String Person_ID;
-    private String Book_ID;
+    private String rentTicket;
+    private String bookID;
     
-    public BookLibrary(String Person_ID, String Book_ID){
-        this.Person_ID = Person_ID;
-        this.Book_ID = Book_ID;
+    public BookLibrary(String rentTicket, String bookID){
+        this.rentTicket = rentTicket;
+        this.bookID = bookID;
     }
 
-    public String getPerson_ID() {
-        return Person_ID;
+    public String getrentTicket() {
+        return rentTicket;
     }
 
-    public void setPerson_ID(String Person_ID) {
-        this.Person_ID = Person_ID;
+    public void setrentTicket(String rentTicket) {
+        this.rentTicket = rentTicket;
     }
 
-    public String getBook_ID() {
-        return Book_ID;
+    public String getbookID() {
+        return bookID;
     }
 }

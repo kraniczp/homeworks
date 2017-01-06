@@ -9,22 +9,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
-    private static Main instance;
     private static Map<String, Books> catalog;
     
-    private Main(){
+    public Main(){
         catalog = new HashMap<>();
     }
     
-    public static Main getInstance(){
-        if(instance == null){
-            instance = new Main();
-        }
-        return instance;    
-    }
-    
-    public static void addBooks(String Book_ID, String title ,String author, String type){
-        catalog.put(Book_ID, new Books(title, author, type) );
+    public static void addBooks(String bookID, String title ,String author, String type){
+        catalog.put(bookID, new Books(title, author, type) );
     }
 
     public static Map<String, Books> getCatalog() {
@@ -32,7 +24,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Main.getInstance();
         int cnumber = 0;
         
         do{
@@ -54,15 +45,15 @@ public class Main {
         
         if(cnumber == 1){
             try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Book_ID:");
-                String Book_ID = br.readLine();
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter bookID:");
+                String bookID = br.readLine();
                 Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Title:");
                 String title = br.readLine();
                 Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Author:");
                 String author = br.readLine();
                 Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Type:");
                 String type = br.readLine();
-                Main.addBooks(Book_ID, title ,author, type);
+                Main.addBooks(bookID, title ,author, type);
             }catch(IOException e){
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -70,11 +61,11 @@ public class Main {
         
         if(cnumber == 2){
             try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Person_ID:");
-                String Person_ID = br.readLine();
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Book_ID:");
-                String Book_ID = br.readLine();
-                LibraryDiary.addBookRent(Person_ID, Book_ID);
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter rentTicket:");
+                String rentTicket = br.readLine();
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter bookID:");
+                String bookID = br.readLine();
+                LibraryDiary.addBookRent(rentTicket, bookID);
             }catch(IOException e){
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -82,11 +73,11 @@ public class Main {
         
         if(cnumber == 3){
             try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Person_ID:");
-                String Person_ID = br.readLine();
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Book_ID:");
-                String Book_ID = br.readLine();
-                LibraryDiary.removeBookRent(Person_ID, Book_ID);
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter rentTicket:");
+                String rentTicket = br.readLine();
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter bookID:");
+                String bookID = br.readLine();
+                LibraryDiary.removeBookRent(rentTicket, bookID);
             }catch(IOException e){
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
             }

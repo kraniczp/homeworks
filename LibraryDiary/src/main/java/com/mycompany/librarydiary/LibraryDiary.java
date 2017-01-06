@@ -24,27 +24,27 @@ public class LibraryDiary{
         return instance;    
     }
 
-    public static void addBookRent(String Person_ID, String Book_ID) 
+    public static void addBookRent(String rentTicket, String bookID) 
                                     throws IllegalArgumentException {
         try{
-            if( ! setBookRented.add(Book_ID) ){
+            if( ! setBookRented.add(bookID) ){
                 throw new IllegalArgumentException ();
             }else{
-                BookLibrary booklibrary = new BookLibrary(Person_ID, Book_ID);
-                books.put(Person_ID, booklibrary);
+                BookLibrary booklibrary = new BookLibrary(rentTicket, bookID);
+                books.put(rentTicket, booklibrary);
             }
         }catch(IllegalArgumentException e){
             Logger.getLogger(LibraryDiary.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     
-    public static void removeBookRent(String Person_ID, String Book_ID) 
+    public static void removeBookRent(String rentTicket, String bookID) 
                                     throws NullPointerException {
         try{
-            if( setBookRented.remove(Book_ID) ){
+            if( setBookRented.remove(bookID) ){
                 throw new NullPointerException();
             }
-            if( ! books.remove(Person_ID, Book_ID) ){
+            if( ! books.remove(rentTicket, bookID) ){
                 throw new NullPointerException();
             }
         }catch(NullPointerException e){
@@ -55,7 +55,7 @@ public class LibraryDiary{
     public void fullWriteOut(){
         for(Map.Entry<String, BookLibrary> bl : books.entrySet()){
             Logger.getLogger(LibraryDiary.class.getName()).log(Level.INFO, bl.getKey());
-            Logger.getLogger(LibraryDiary.class.getName()).log(Level.INFO, bl.getValue().getBook_ID());
+            Logger.getLogger(LibraryDiary.class.getName()).log(Level.INFO, bl.getValue().getbookID());
         }
     }
 }
