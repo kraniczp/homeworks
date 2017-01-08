@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 public class Main {
     private static Map<String, Books> catalog;
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     
     public Main(){
         catalog = new HashMap<>();
@@ -24,62 +25,62 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        int cnumber = 0;
+        int menuSelectNumber = 0;
         
         do{
-            Logger.getLogger(Main.class.getName()).log(Level.INFO, "Choose what you want to do!");
-            Logger.getLogger(Main.class.getName()).log(Level.INFO, "Add new book: 1 ");
-            Logger.getLogger(Main.class.getName()).log(Level.INFO, "Rent a book: 2 ");
-            Logger.getLogger(Main.class.getName()).log(Level.INFO, "Back a book: 3 ");
-            Logger.getLogger(Main.class.getName()).log(Level.INFO, "Exit: 4 ");
+            LOGGER.log(Level.INFO, "Choose what you want to do!");
+            LOGGER.log(Level.INFO, "Add new book: 1 ");
+            LOGGER.log(Level.INFO, "Rent a book: 2 ");
+            LOGGER.log(Level.INFO, "Back a book: 3 ");
+            LOGGER.log(Level.INFO, "Exit: 4 ");
         
             try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-                cnumber = Integer.parseInt(br.readLine());
+                menuSelectNumber = Integer.parseInt(br.readLine());
             }catch(IOException e){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+                LOGGER.log(Level.SEVERE, null, e);
             }
-            if(cnumber == 4){
+            if(menuSelectNumber == 4){
                 System.exit(0);
             }
-        }while((cnumber != 1) || (cnumber != 2) || (cnumber != 3));
+        }while((menuSelectNumber != 1) || (menuSelectNumber != 2) || (menuSelectNumber != 3));
         
-        if(cnumber == 1){
+        if(menuSelectNumber == 1){
             try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter bookID:");
+                LOGGER.log(Level.INFO, "Enter bookID:");
                 String bookID = br.readLine();
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Title:");
+                LOGGER.log(Level.INFO, "Enter Title:");
                 String title = br.readLine();
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Author:");
+                LOGGER.log(Level.INFO, "Enter Author:");
                 String author = br.readLine();
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter Type:");
+                LOGGER.log(Level.INFO, "Enter Type:");
                 String type = br.readLine();
                 Main.addBooks(bookID, title ,author, type);
             }catch(IOException e){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
         
-        if(cnumber == 2){
+        if(menuSelectNumber == 2){
             try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter rentTicket:");
+                LOGGER.log(Level.INFO, "Enter rentTicket:");
                 String rentTicket = br.readLine();
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter bookID:");
+                LOGGER.log(Level.INFO, "Enter bookID:");
                 String bookID = br.readLine();
                 LibraryDiary.addBookRent(rentTicket, bookID);
             }catch(IOException e){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
         
-        if(cnumber == 3){
+        if(menuSelectNumber == 3){
             try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter rentTicket:");
+                LOGGER.log(Level.INFO, "Enter rentTicket:");
                 String rentTicket = br.readLine();
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Enter bookID:");
+                LOGGER.log(Level.INFO, "Enter bookID:");
                 String bookID = br.readLine();
                 LibraryDiary.removeBookRent(rentTicket, bookID);
             }catch(IOException e){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
     }

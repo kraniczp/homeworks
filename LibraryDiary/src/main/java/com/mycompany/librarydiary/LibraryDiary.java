@@ -11,6 +11,7 @@ public class LibraryDiary{
     private static LibraryDiary instance;
     private static Map<String, BookLibrary> books;
     private static Set<String> setBookRented;
+    private static final Logger LOGGER = Logger.getLogger(LibraryDiary.class.getName());
     
     private LibraryDiary(){
         books = new HashMap<>();
@@ -34,7 +35,7 @@ public class LibraryDiary{
                 books.put(rentTicket, booklibrary);
             }
         }catch(IllegalArgumentException e){
-            Logger.getLogger(LibraryDiary.class.getName()).log(Level.SEVERE, null, e);
+            LOGGER.log(Level.SEVERE, null, e);
         }
     }
     
@@ -48,14 +49,14 @@ public class LibraryDiary{
                 throw new NullPointerException();
             }
         }catch(NullPointerException e){
-            Logger.getLogger(LibraryDiary.class.getName()).log(Level.SEVERE, null, e);
+            LOGGER.log(Level.SEVERE, null, e);
         }
     }
     
     public void fullWriteOut(){
         for(Map.Entry<String, BookLibrary> bl : books.entrySet()){
-            Logger.getLogger(LibraryDiary.class.getName()).log(Level.INFO, bl.getKey());
-            Logger.getLogger(LibraryDiary.class.getName()).log(Level.INFO, bl.getValue().getbookID());
+            LOGGER.log(Level.INFO, bl.getKey());
+            LOGGER.log(Level.INFO, bl.getValue().getbookID());
         }
     }
 }
